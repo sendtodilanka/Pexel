@@ -6,6 +6,7 @@ plugins {
     id(libs.plugins.kotlin.android.get().pluginId)
     id(libs.plugins.kotlin.kapt.get().pluginId)
     id(libs.plugins.kotlin.parcelize.get().pluginId)
+    id(libs.plugins.safe.args.get().pluginId)
     id(libs.plugins.hilt.plugin.get().pluginId)
     id(libs.plugins.ksp.get().pluginId) version libs.versions.ksp.get()
 }
@@ -29,8 +30,8 @@ android {
             isMinifyEnabled = true
 
             proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
             )
         }
     }
@@ -48,6 +49,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 
@@ -63,6 +65,9 @@ dependencies {
 
     // recyclerView
     implementation(libs.androidx.recyclerview)
+
+    // paging
+    implementation(libs.androidx.paging)
 
     // coroutines
     implementation(libs.coroutines)
@@ -86,11 +91,18 @@ dependencies {
     // whatIf
     implementation(libs.whatif)
 
+    // transformation animation
+    implementation(libs.transformationLayout)
+
     // network
     implementation(libs.sandwich)
     implementation(libs.retrofit)
     implementation(libs.retrofit.moshi)
     implementation(libs.okhttp.interceptor)
+
+    // image loading
+    implementation(libs.glide)
+    //implementation(libs.glide.palette)
 
     // logger
     api(libs.timber)

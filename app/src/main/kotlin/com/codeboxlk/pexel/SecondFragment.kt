@@ -1,44 +1,49 @@
 package com.codeboxlk.pexel
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.codeboxlk.pexel.adapter.ResultsAdapter
+import com.codeboxlk.pexel.data.model.PexelPhoto
 import com.codeboxlk.pexel.databinding.FragmentSecondBinding
+import com.codeboxlk.pexel.extension.firstCap
+import com.codeboxlk.pexel.extension.screenHeightInPx
+import com.codeboxlk.pexel.extension.screenWidthInPx
+import com.skydoves.bindables.BindingFragment
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
-class SecondFragment : Fragment() {
+@AndroidEntryPoint
+class SecondFragment : BindingFragment<FragmentSecondBinding>(R.layout.fragment_second),
+    ResultsAdapter.OnItemClickListener {
 
-    private var _binding: FragmentSecondBinding? = null
+    @Inject
+    internal lateinit var viewModelFactory: SecondViewModel.AssistedFactory
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-        _binding = FragmentSecondBinding.inflate(inflater, container, false)
-        return binding.root
-
+    private val args: SecondFragmentArgs by navArgs()
+    private val viewModel: SecondViewModel by viewModels {
+        SecondViewModel.provideFactory(viewModelFactory, args.searchQuery)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+        binding {
+            toolbar.title = args.searchQuery.firstCap
+            toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+
+            adapter = ResultsAdapter().apply {
+                setOnItemClickListener(this@SecondFragment)
+            }
+            vm = viewModel
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onItemClicked(pexelPhoto: PexelPhoto) {
+
     }
 }

@@ -16,6 +16,7 @@ androidxRoom = "2.5.0"
 androidxArchCore = "2.1.0"
 androidXStartup = "1.1.1"
 androidXRecyclerView = "1.2.1"
+androidXPaging = "3.1.1"
 bindables = "1.1.0"
 hilt = "2.44"
 retrofit = "2.9.0"
@@ -57,11 +58,13 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 spotless = { id = "com.diffplug.spotless", version = "6.7.2" }
 hilt-plugin = { id = "dagger.hilt.android.plugin", version = "hilt" }
+safe-args = { id = "androidx.navigation.safeargs", version = "androidxNavigation" }
 
 [libraries]
 agp = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 ksp = { module = "com.google.devtools.ksp:symbol-processing", version.ref = "ksp" }
+safe-args = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "androidxNavigation" }
 
 material = { module = "com.google.android.material:material", version.ref = "material" }
 androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidxCore" }
@@ -77,6 +80,7 @@ androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref =
 androidx-arch-core = { module = "androidx.arch.core:core-testing", version.ref = "androidxArchCore" }
 androidx-startup = { module = "androidx.startup:startup-runtime", version.ref = "androidXStartup" }
 androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "androidXRecyclerView" }
+androidx-paging = { module = "androidx.paging:paging-runtime", version.ref = "androidXPaging" }
 androidx-test-core = { module = "androidx.test:core", version.ref = "androidxTest" }
 androidx-junit = { module = "androidx.test.ext:junit", version.ref = "androidxTestJunit" }
 androidx-espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
