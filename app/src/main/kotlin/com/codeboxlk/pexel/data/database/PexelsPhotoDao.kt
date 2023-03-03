@@ -11,6 +11,6 @@ interface PexelsPhotoDao {
     @Query("SELECT * FROM PexelPhotoEntity WHERE page = :page_ AND query = :query_")
     suspend fun getPexelsList(page_: Int, query_: String): List<PexelPhotoEntity>
 
-    @Query("SELECT * FROM PexelPhotoEntity WHERE page <= :page_ AND query = :query_")
+    @Query("SELECT * FROM PexelPhotoEntity WHERE page <= :page_ AND query = :query_ ORDER BY page ASC")
     suspend fun getAllPexelsList(page_: Int, query_: String): List<PexelPhotoEntity>
 }
