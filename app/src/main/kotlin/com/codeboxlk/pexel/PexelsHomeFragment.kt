@@ -8,12 +8,11 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.codeboxlk.pexel.adapter.CategoryColor
-import com.codeboxlk.pexel.adapter.CategoryTheme
+import com.codeboxlk.pexel.adapter.ColorAdapter
+import com.codeboxlk.pexel.adapter.ThemeAdapter
 import com.codeboxlk.pexel.data.model.CategoryModel
-import com.codeboxlk.pexel.databinding.FragmentFirstBinding
+import com.codeboxlk.pexel.databinding.FragmentPexelsHomeBinding
 import com.skydoves.bindables.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,10 +20,11 @@ import dagger.hilt.android.AndroidEntryPoint
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 @AndroidEntryPoint
-class FirstFragment : BindingFragment<FragmentFirstBinding>(R.layout.fragment_first),
-    CategoryColor.OnItemClickListener, CategoryTheme.OnItemClickListener {
+class PexelsHomeFragment :
+    BindingFragment<FragmentPexelsHomeBinding>(R.layout.fragment_pexels_home),
+    ColorAdapter.OnItemClickListener, ThemeAdapter.OnItemClickListener {
 
-    private val vm: FirstViewModel by viewModels()
+    private val viewModel: PexelsHomeViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -39,33 +39,32 @@ class FirstFragment : BindingFragment<FragmentFirstBinding>(R.layout.fragment_fi
             insets
         }
 
-        val colorAdapter = CategoryColor().apply {
-            setOnItemClickListener(this@FirstFragment)
-        }
-
-        val themeAdapter = CategoryTheme().apply {
-            setOnItemClickListener(this@FirstFragment)
-        }
-
-        binding.rvColor.adapter = colorAdapter
-        binding.rvTheme.adapter = themeAdapter
-
-        lifecycleScope.launchWhenResumed {
-            vm.categoryThemes.observe(viewLifecycleOwner) {
-                themeAdapter.submitList(it)
+        binding {
+            colorAdapter = ColorAdapter().apply {
+                setOnItemClickListener(this@PexelsHomeFragment)
             }
 
-            vm.categoryColors.observe(viewLifecycleOwner) {
-                colorAdapter.submitList(it)
+            themeAdapter = ThemeAdapter().apply {
+                setOnItemClickListener(this@PexelsHomeFragment)
+            }
+
+            vm = viewModel
+
+            searchBar.setOnClickListener {
+                findNavController().navigate(
+                    PexelsHomeFragmentDirections
+                        .actionPexelsHomeFragmentToPexelsSearchFragment()
+                )
             }
         }
     }
 
     override fun onItemClicked(categoryModel: CategoryModel) {
         findNavController().navigate(
-            FirstFragmentDirections.actionFirstFragmentToSecondFragment(
-                categoryModel.category.name
-            )
+            PexelsHomeFragmentDirections
+                .actionPexelsHomeFragmentToPexelsResultsFragment(
+                    categoryModel.category.name
+                )
         )
     }
 }

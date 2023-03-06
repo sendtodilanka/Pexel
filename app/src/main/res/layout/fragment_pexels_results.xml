@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.codeboxlk.pexel.SecondViewModel" />
+            type="com.codeboxlk.pexel.PexelsResultsViewModel" />
 
         <variable
             name="adapter"
@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context=".SecondFragment">
+        tools:context=".PexelsResultsFragment">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -47,6 +47,14 @@
             app:paginationPokemonList="@{vm}"
             app:spanCount="2"
             app:submitList="@{vm.pexelsList}"
-            app:toast="@{vm.toastMessage}" />
+            app:snack="@{vm.toastMessage}"
+            app:snackAction="@{vm}" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:gone="@{!vm.loading}"
+            android:indeterminate="true" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

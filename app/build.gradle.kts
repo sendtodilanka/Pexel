@@ -74,6 +74,8 @@ dependencies {
 
     // di
     implementation(libs.hilt.android)
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
     kapt(libs.hilt.compiler)
 
     // database

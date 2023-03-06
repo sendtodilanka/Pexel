@@ -36,7 +36,5 @@
                 android:name="com.codeboxlk.pexel.initializer.TimberInitializer"
                 android:value="androidx.startup" />
         </provider>
-
     </application>
-
 </manifest>

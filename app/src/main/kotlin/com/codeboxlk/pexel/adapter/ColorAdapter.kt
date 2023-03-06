@@ -10,14 +10,13 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.codeboxlk.pexel.R
 import com.codeboxlk.pexel.data.model.CategoryModel
-import com.codeboxlk.pexel.databinding.ItemCategoryColorBinding
+import com.codeboxlk.pexel.databinding.ItemColorBinding
 import com.codeboxlk.pexel.extension.px
 import com.skydoves.bindables.BindingListAdapter
 import com.skydoves.bindables.binding
 import com.skydoves.whatif.whatIfNotNull
-import timber.log.Timber
 
-class CategoryColor : BindingListAdapter<CategoryModel, RecyclerView.ViewHolder>(DIFFUTILS) {
+class ColorAdapter : BindingListAdapter<CategoryModel, RecyclerView.ViewHolder>(DIFFUTILS) {
 
     private lateinit var itemClickLister: OnItemClickListener
 
@@ -29,11 +28,11 @@ class CategoryColor : BindingListAdapter<CategoryModel, RecyclerView.ViewHolder>
         itemClickLister = listener
     }
 
-    inner class ItemViewHolder(val binding: ItemCategoryColorBinding) :
+    inner class ItemViewHolder(val binding: ItemColorBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return ItemViewHolder(parent.binding(R.layout.item_category_color))
+        return ItemViewHolder(parent.binding(R.layout.item_color))
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

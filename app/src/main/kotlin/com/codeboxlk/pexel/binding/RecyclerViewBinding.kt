@@ -3,7 +3,7 @@ package com.codeboxlk.pexel.binding
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.codeboxlk.pexel.RecyclerViewPagination
-import com.codeboxlk.pexel.SecondViewModel
+import com.codeboxlk.pexel.PexelsResultsViewModel
 import com.skydoves.bindables.BindingListAdapter
 import com.skydoves.whatif.whatIfNotNullAs
 
@@ -27,7 +27,7 @@ object RecyclerViewBinding {
 
     @JvmStatic
     @BindingAdapter("paginationPokemonList")
-    fun paginationPokemonList(view: RecyclerView, viewModel: SecondViewModel) {
+    fun paginationPokemonList(view: RecyclerView, viewModel: PexelsResultsViewModel) {
         RecyclerViewPagination(
             recyclerView = view,
             isLoading = { viewModel.isLoading },

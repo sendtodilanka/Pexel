@@ -7,17 +7,15 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.request.RequestOptions
 import com.codeboxlk.pexel.R
 import com.codeboxlk.pexel.data.model.CategoryModel
-import com.codeboxlk.pexel.databinding.ItemCategoryThemeBinding
-import com.codeboxlk.pexel.extension.dp
+import com.codeboxlk.pexel.databinding.ItemThemeBinding
 import com.codeboxlk.pexel.extension.firstCap
 import com.codeboxlk.pexel.extension.px
 import com.skydoves.bindables.BindingListAdapter
 import com.skydoves.bindables.binding
 
-class CategoryTheme : BindingListAdapter<CategoryModel, RecyclerView.ViewHolder>(DIFFUTILS) {
+class ThemeAdapter : BindingListAdapter<CategoryModel, RecyclerView.ViewHolder>(DIFFUTILS) {
 
     private lateinit var itemClickLister: OnItemClickListener
 
@@ -29,11 +27,11 @@ class CategoryTheme : BindingListAdapter<CategoryModel, RecyclerView.ViewHolder>
         itemClickLister = listener
     }
 
-    inner class ItemViewHolder(val binding: ItemCategoryThemeBinding) :
+    inner class ItemViewHolder(val binding: ItemThemeBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return ItemViewHolder(parent.binding(R.layout.item_category_theme))
+        return ItemViewHolder(parent.binding(R.layout.item_theme))
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

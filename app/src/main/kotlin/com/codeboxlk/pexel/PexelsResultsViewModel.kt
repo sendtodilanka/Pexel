@@ -7,15 +7,19 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.codeboxlk.pexel.data.model.PexelPhoto
 import com.codeboxlk.pexel.data.repository.Repository
+import com.google.android.material.snackbar.Snackbar
 import com.skydoves.bindables.BindingViewModel
 import com.skydoves.bindables.asBindingProperty
 import com.skydoves.bindables.bindingProperty
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.launch
+import timber.log.Timber
 
-class SecondViewModel @AssistedInject constructor(
+class PexelsResultsViewModel @AssistedInject constructor(
     private val repository: Repository,
     @Assisted private val searchQuery: String
 ) : BindingViewModel() {
@@ -31,10 +35,11 @@ class SecondViewModel @AssistedInject constructor(
     private val pexelsFetchingIndex: MutableStateFlow<Int> = MutableStateFlow(0)
 
     private val pexelsListFlow = pexelsFetchingIndex.flatMapLatest { page ->
+        Timber.d("pexelsListFlow() -> $page")
         repository.searchPhotos(
             query = searchQuery,
             page = page,
-            perPage = 15,
+            perPage = 50,
             onStart = { isLoading = true },
             onComplete = { isLoading = false },
             onError = { toastMessage = it }
@@ -49,14 +54,23 @@ class SecondViewModel @AssistedInject constructor(
 
     @MainThread
     fun fetchNextPexelsList() {
-        if (!isLoading) {
+        if (!isLoading) { pexelsFetchingIndex.value++ }
+    }
+
+    fun retry() {
+        Timber.d("retry()")
+        viewModelScope.launch {
+            pexelsFetchingIndex.value--
+
+            delay(500)
+
             pexelsFetchingIndex.value++
         }
     }
 
     @dagger.assisted.AssistedFactory
     interface AssistedFactory {
-        fun create(searchQuery: String): SecondViewModel
+        fun create(searchQuery: String): PexelsResultsViewModel
     }
 
     companion object {
