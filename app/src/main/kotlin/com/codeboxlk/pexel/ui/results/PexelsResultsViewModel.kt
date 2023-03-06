@@ -1,4 +1,4 @@
-package com.codeboxlk.pexel
+package com.codeboxlk.pexel.ui.results
 
 import androidx.annotation.MainThread
 import androidx.databinding.Bindable
@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.codeboxlk.pexel.data.model.PexelPhoto
 import com.codeboxlk.pexel.data.repository.Repository
-import com.google.android.material.snackbar.Snackbar
 import com.skydoves.bindables.BindingViewModel
 import com.skydoves.bindables.asBindingProperty
 import com.skydoves.bindables.bindingProperty

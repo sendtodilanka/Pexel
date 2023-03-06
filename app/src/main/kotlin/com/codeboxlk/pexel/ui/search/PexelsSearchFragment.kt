@@ -1,4 +1,4 @@
-package com.codeboxlk.pexel
+package com.codeboxlk.pexel.ui.search
 
 import android.app.Activity
 import android.content.Context
@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.speech.RecognizerIntent.EXTRA_RESULTS
 import android.view.View
-import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
@@ -15,6 +14,8 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.codeboxlk.pexel.PexelsSearchFragmentDirections
+import com.codeboxlk.pexel.R
 import com.codeboxlk.pexel.databinding.FragmentPexelsSearchBinding
 import com.codeboxlk.pexel.extension.firstCap
 import com.codeboxlk.pexel.extension.showSoftKeyboard
@@ -102,8 +103,9 @@ class PexelsSearchFragment :
         binding.searchText.apply {
             if (!text.isNullOrBlank()) {
                 findNavController().navigate(
-                    PexelsSearchFragmentDirections
-                        .actionPexelsSearchFragmentToPexelsResultsFragment(text.toString().trim())
+                    PexelsSearchFragmentDirections.actionPexelsSearchFragmentToPexelsResultsFragment(
+                        text.toString().trim()
+                    )
                 )
             }
         }

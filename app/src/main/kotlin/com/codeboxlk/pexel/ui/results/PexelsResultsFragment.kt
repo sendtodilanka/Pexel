@@ -1,10 +1,12 @@
-package com.codeboxlk.pexel
+package com.codeboxlk.pexel.ui.results
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.codeboxlk.pexel.PexelsResultsFragmentArgs
+import com.codeboxlk.pexel.R
 import com.codeboxlk.pexel.adapter.ResultsAdapter
 import com.codeboxlk.pexel.data.model.PexelPhoto
 import com.codeboxlk.pexel.databinding.FragmentPexelsResultsBinding

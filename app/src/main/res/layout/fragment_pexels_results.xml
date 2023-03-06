@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.codeboxlk.pexel.PexelsResultsViewModel" />
+            type="com.codeboxlk.pexel.ui.results.PexelsResultsViewModel" />
 
         <variable
             name="adapter"
@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context=".PexelsResultsFragment">
+        tools:context=".ui.results.PexelsResultsFragment">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"

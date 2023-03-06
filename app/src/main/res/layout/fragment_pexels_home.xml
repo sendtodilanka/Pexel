@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.codeboxlk.pexel.PexelsHomeViewModel" />
+            type="com.codeboxlk.pexel.ui.home.PexelsHomeViewModel" />
 
         <variable
             name="colorAdapter"
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".PexelsHomeFragment">
+        tools:context=".ui.home.PexelsHomeFragment">
 
         <LinearLayout
             android:id="@+id/search_bar"

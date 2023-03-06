@@ -1,4 +1,4 @@
-package com.codeboxlk.pexel
+package com.codeboxlk.pexel.ui.home
 
 import android.os.Bundle
 import android.view.View
@@ -9,6 +9,8 @@ import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.codeboxlk.pexel.PexelsHomeFragmentDirections
+import com.codeboxlk.pexel.R
 import com.codeboxlk.pexel.adapter.ColorAdapter
 import com.codeboxlk.pexel.adapter.ThemeAdapter
 import com.codeboxlk.pexel.data.model.CategoryModel
@@ -52,8 +54,7 @@ class PexelsHomeFragment :
 
             searchBar.setOnClickListener {
                 findNavController().navigate(
-                    PexelsHomeFragmentDirections
-                        .actionPexelsHomeFragmentToPexelsSearchFragment()
+                    PexelsHomeFragmentDirections.actionPexelsHomeFragmentToPexelsSearchFragment()
                 )
             }
         }
@@ -61,10 +62,9 @@ class PexelsHomeFragment :
 
     override fun onItemClicked(categoryModel: CategoryModel) {
         findNavController().navigate(
-            PexelsHomeFragmentDirections
-                .actionPexelsHomeFragmentToPexelsResultsFragment(
-                    categoryModel.category.name
-                )
+            PexelsHomeFragmentDirections.actionPexelsHomeFragmentToPexelsResultsFragment(
+                categoryModel.category.name
+            )
         )
     }
 }

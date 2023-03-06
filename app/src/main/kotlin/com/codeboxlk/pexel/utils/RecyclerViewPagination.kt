@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeboxlk.pexel
+package com.codeboxlk.pexel.utils
 
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager

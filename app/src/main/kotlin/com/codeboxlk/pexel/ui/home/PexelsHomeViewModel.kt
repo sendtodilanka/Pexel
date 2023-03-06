@@ -1,8 +1,9 @@
-package com.codeboxlk.pexel
+package com.codeboxlk.pexel.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.codeboxlk.pexel.R
 import com.codeboxlk.pexel.data.model.CategoryModel
 import com.codeboxlk.pexel.data.model.PhotoCategory
 import com.skydoves.bindables.BindingViewModel

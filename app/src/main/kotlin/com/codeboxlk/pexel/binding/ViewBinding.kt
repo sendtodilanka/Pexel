@@ -1,11 +1,10 @@
 package com.codeboxlk.pexel.binding
 
 import android.view.View
-import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.OnBackPressedDispatcherOwner
 import androidx.databinding.BindingAdapter
-import com.codeboxlk.pexel.PexelsResultsViewModel
+import com.codeboxlk.pexel.ui.results.PexelsResultsViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.skydoves.whatif.whatIfNotNullOrEmpty
 import timber.log.Timber

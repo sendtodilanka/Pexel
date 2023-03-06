@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/PexelsHomeFragment"
-        android:name="com.codeboxlk.pexel.PexelsHomeFragment"
+        android:name="com.codeboxlk.pexel.ui.home.PexelsHomeFragment"
         tools:layout="@layout/fragment_pexels_home">
         <action
             android:id="@+id/action_PexelsHomeFragment_to_PexelsResultsFragment"
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/PexelsResultsFragment"
-        android:name="com.codeboxlk.pexel.PexelsResultsFragment"
+        android:name="com.codeboxlk.pexel.ui.results.PexelsResultsFragment"
         tools:layout="@layout/fragment_pexels_results">
         <argument
             android:name="search_query"
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/PexelsSearchFragment"
-        android:name="com.codeboxlk.pexel.PexelsSearchFragment"
+        android:name="com.codeboxlk.pexel.ui.search.PexelsSearchFragment"
         android:label="PexelsSearchFragment" >
         <action
             android:id="@+id/action_PexelsSearchFragment_to_PexelsResultsFragment"

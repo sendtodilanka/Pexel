@@ -1,4 +1,4 @@
-package com.codeboxlk.pexel
+package com.codeboxlk.pexel.ui.search
 
 import androidx.lifecycle.ViewModel
 

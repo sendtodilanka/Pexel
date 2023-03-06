@@ -2,8 +2,8 @@ package com.codeboxlk.pexel.binding
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.codeboxlk.pexel.RecyclerViewPagination
-import com.codeboxlk.pexel.PexelsResultsViewModel
+import com.codeboxlk.pexel.utils.RecyclerViewPagination
+import com.codeboxlk.pexel.ui.results.PexelsResultsViewModel
 import com.skydoves.bindables.BindingListAdapter
 import com.skydoves.whatif.whatIfNotNullAs
 
